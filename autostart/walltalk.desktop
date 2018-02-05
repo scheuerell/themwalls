@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=retrocap autostart
+Comment=start retrocap
+NoDisplay=true
+Exec=/home/pi/Projects/walltalk/autostart/walltalk.sh
+NotShowIn=GNOME;KDE;XFCE;
+Name[en_GB]=walltalk
+Comment[en_GB]=start walltalk
