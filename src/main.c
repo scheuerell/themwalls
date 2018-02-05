@@ -1,7 +1,5 @@
 /*
- *  Copyright (C) 2004 Steve Harris
- *  Copyright (C) 2006 Garett Shulman
- *  Copyright (C) 2009 Adam Sampson
+ *  Copyright (C) 2018 Mike Scheuerell
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,20 +28,6 @@
 #include <sndfile.h>
 #include <gtk/gtk.h>
 
-#ifdef HAVE_LASH
-#include <lash/lash.h>
-
-lash_client_t *lash_client;
-#endif
-
-#ifdef HAVE_LIBREADLINE
-#include <readline/readline.h>
-#include <readline/history.h>
-#endif
-
-#ifdef HAVE_LIBLO
-#include <lo/lo.h>
-#endif
 
 #include "threads.h"
 #include "interface.h"
@@ -83,26 +67,16 @@ jack_client_t *client;
 GdkPixbuf *img_on, *img_off, *img_busy;
 GdkPixbuf *icon_on, *icon_off;
 
-#ifdef HAVE_LIBLO
-int osc_handler(const char *path, const char *types, lo_arg **argv, int argc,
-		lo_message msg, void *user_data);
-int osc_handler_nox(const char *path, const char *types, lo_arg **argv,
-		int argc, lo_message msg, void *user_data);
-#endif
 
 int main(int argc, char *argv[])
 {
     unsigned int i;
     int opt;
     int help = 0;
-    int console = 0;
+    //int console = 0;
     char port_name[32];
     pthread_t dt;
     pthread_t bt;
-#ifdef HAVE_LASH
-    lash_args_t *lash_args = lash_extract_args(&argc, &argv);
-     lash_event_t *event;
-#endif
 
     auto_begin_threshold = db2lin(DEFAULT_AUTO_BEGIN_THRESHOLD);
     auto_end_threshold = db2lin(DEFAULT_AUTO_END_THRESHOLD);
@@ -112,9 +86,11 @@ int main(int argc, char *argv[])
 	case 'h':
 	    help = 1;
 	    break;
+	/*
 	case 'i':
 	    console = 1;
 	    break;
+	*/
 	case 'c':
 	    num_ports = atoi(optarg);
 	    DEBUG(1, "ports: %d\n", num_ports);
@@ -213,27 +189,12 @@ int main(int argc, char *argv[])
 
     process_init(buf_length);
 
-#ifdef HAVE_LASH
-    lash_client = lash_init (lash_args, "walltalk",
-                     0, /* would be LASH_Config_Data_Set etc. */
-                     LASH_PROTOCOL (2,0));
-    if (!lash_client) {
-	DEBUG(1, "could not initialise LASH\n");
-    }
-    event = lash_event_new_with_type(LASH_Client_Name);
-    lash_event_set_string(event, client_name);
-    lash_send_event(lash_client, event);
-#endif
-
     jack_set_process_callback(client, process, 0);
 
     if (jack_activate(client)) {
 	DEBUG(0, "cannot activate JACK client");
 	exit(1);
     }
-#ifdef HAVE_LASH
-    lash_jack_client_name(lash_client, client_name);
-#endif
 
     /* Create the jack ports */
     for (i = 0; i < num_ports; i++) {
@@ -273,42 +234,6 @@ int main(int argc, char *argv[])
     /* mjs start the blink thread */
     pthread_create(&bt, NULL, (void *)&blink_thread, NULL);
 
-#ifdef HAVE_LIBREADLINE
-    if (console || !getenv("DISPLAY") || getenv("DISPLAY")[0] == '\0') {
-
-#ifdef HAVE_LIBLO
-      lo_server_thread st = lo_server_thread_new(OSC_PORT, NULL);
-      if (st) {
-	  lo_server_thread_add_method(st, "/start", "", osc_handler_nox, (void *)1);
-	  lo_server_thread_add_method(st, "/stop", "", osc_handler_nox, (void *)0);
-	  lo_server_thread_start(st);
-	  printf("Listening for OSC requests on osc.udp://localhost:%s\n",
-	    OSC_PORT);
-      }
-#endif
-
-      int done = 0;
-      while (!done) {
-	char *line = readline("walltalk> ");
-	if (!line) {
-	  printf("EOF\n");
-	  break;
-	}
-	if (line && *line) {
-	  add_history(line);
-	  if (strncmp(line, "q", 1) == 0) done = 1;
-	  else if (strncmp(line, "start", 3) == 0) recording_start();
-	  else if (strncmp(line, "stop", 3) == 0) recording_stop();
-	  else if (strncmp(line, "help", 3) == 0) {
-	    printf("Commands: start stop\n");
-	  } else {
-	    printf("Unknown command\n");
-          }
-	}
-	free(line);
-      }
-    } else
-#endif
     {
       gtk_init(&argc, &argv);
 
@@ -328,21 +253,6 @@ int main(int argc, char *argv[])
 
       bind_meters();
       g_timeout_add(100, meter_tick, NULL);
-
-#ifdef HAVE_LIBLO
-    lo_server_thread st = lo_server_thread_new(OSC_PORT, NULL);
-    if (st) {
-	lo_server_thread_add_method(st, "/start", "", osc_handler, (void *)1);
-	lo_server_thread_add_method(st, "/stop", "", osc_handler, (void *)0);
-	lo_server_thread_start(st);
-	printf("Listening for OSC requests on osc.udp://localhost:%s\n",
-	       OSC_PORT);
-    }
-#endif
-
-#ifdef HAVE_LASH
-      gtk_idle_add(idle_cb, lash_client);
-#endif
 
       gtk_main();
     }
@@ -370,36 +280,5 @@ void cleanup()
     /* And were done */
     exit(0);
 }
-
-#ifdef HAVE_LASH
-gboolean idle_cb(gpointer data)
-{
-    lash_client_t *lash_client = (lash_client_t *)data;
-    lash_event_t *event;
-    lash_config_t *config;
-
-    while ((event = lash_get_event(lash_client))) {
-	if (lash_event_get_type(event) == LASH_Save_Data_Set) {
-	    /* we can ignore this as walltalk has no state thats not on the
-             * command line */
-	} else if (lash_event_get_type(event) == LASH_Quit) {
-	    cleanup();
-	} else {
-	    DEBUG(0, "unhandled LASH event: type %d, '%s''\n",
-		   lash_event_get_type(event),
-		   lash_event_get_string(event));
-	}
-    }
-
-    while ((config = lash_get_config(lash_client))) {
-	DEBUG(0, "got unexpected LASH config: %s\n",
-	       lash_config_get_key(config));
-    }
-
-    usleep(10000);
-
-    return TRUE;
-}
-#endif
 
 /* vi:set ts=8 sts=4 sw=4: */
