@@ -36,6 +36,7 @@
 #include "main.h"
 #include <wiringPi.h>
 #include "usb_manage.h"
+#include "pbrx/rfpbrx_api.h"
 
 #define DEBUG(lvl, txt...) \
     if (verbosity >= lvl) fprintf(stderr, PACKAGE ": " txt)
@@ -227,35 +228,42 @@ int main(int argc, char *argv[])
 	pullUpDnControl(PB, PUD_DOWN);
 	digitalWrite (LED, 1) ; 
 	//out = wiringPiISR(PB, INT_EDGE_RISING);
-
+	
+	/* mjs setup RF pusshbutton*/
+	if ( rfpb_init () == 0) 
+	{
+		printf("init failed\n");
+		exit(0);
+	} 
+	
 	/* find the first USB flash drive, unmount it, then re-mount to /media/pi/USB_DISK */
 	usb_removable_prep(dev_path);			
     
     /* mjs start the blink thread */
     pthread_create(&bt, NULL, (void *)&blink_thread, NULL);
 
-    {
-      gtk_init(&argc, &argv);
-
-      add_pixmap_directory(PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
-      add_pixmap_directory("pixmaps");
-      add_pixmap_directory("../pixmaps");
-
-      img_on = create_pixbuf("on.png");
-      img_off = create_pixbuf("off.png");
-      img_busy = create_pixbuf("busy.png");
-      icon_on = create_pixbuf("on-icon.png");
-      icon_off = create_pixbuf("off-icon.png");
-
-      main_window = create_window(client_name);
-      gtk_window_set_icon(GTK_WINDOW(main_window), icon_off);
-      gtk_widget_show(main_window);
-
-      bind_meters();
-      g_timeout_add(100, meter_tick, NULL);
-
-      gtk_main();
-    }
+	// wait indefinately if display is not detected, otherwise start the interface
+	if (!getenv("DISPLAY") || getenv("DISPLAY")[0] == '\0') {
+		pause();
+	}
+	else {
+		// start graphical display
+		gtk_init(&argc, &argv);
+		add_pixmap_directory(PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
+		add_pixmap_directory("pixmaps");
+		add_pixmap_directory("../pixmaps");
+		img_on = create_pixbuf("on.png");
+		img_off = create_pixbuf("off.png");
+		img_busy = create_pixbuf("busy.png");
+		icon_on = create_pixbuf("on-icon.png");
+		icon_off = create_pixbuf("off-icon.png");
+		main_window = create_window(client_name);
+		gtk_window_set_icon(GTK_WINDOW(main_window), icon_off);
+		gtk_widget_show(main_window);
+		bind_meters();
+		g_timeout_add(100, meter_tick, NULL);
+		gtk_main();
+	}
 
     cleanup();
 

@@ -31,6 +31,7 @@
 #include "threads.h"
 #include "meters.h"
 #include "usb_manage.h"
+#include "pbrx/rfpbrx_api.h"
 
 #define BUF_SIZE 4096
 
@@ -148,7 +149,7 @@ int writer_thread(void *d)
   again:
     while (!recording && !quiting) {
 		usleep(100);
-		if (digitalRead (PB)) {
+		if (digitalRead (PB) || rfpb_test()) {
 			recording_start();  
 		}
     }

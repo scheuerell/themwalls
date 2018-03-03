@@ -4,7 +4,8 @@
 
 #set timezone
 TZ='America/Menominee'; export TZ
-
+#set gpio 2 (wiringpi gpio ID) to high-impedance (no pullup)
+#gpio mode 2 tri
 # start jack server
 #/usr/bin/jackd -dalsa -dhw:C320,0 -r48000 -p1024 -n2 &
 /usr/bin/jackd -dalsa -dhw:Device -r48000 -p1024 -n2 &
