@@ -1,0 +1,5 @@
+version 000 
+working features:  
+- autostart
+- USB sound capture to USB disk triggered by local pushbutton or wireless doorbell.  
+- Tolerant of multiple USB disks, absent USB disk, and hot-swapped USB disk
