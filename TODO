@@ -1,1 +1,41 @@
-Add running time timer / disk space left indicator
+FEATURE
+config file
+	SSID
+	key
+	timezone
+	google drive URL
+	dropbox url
+WIRELESS FILE TRANSFER
+
+
+FAULT HANDLING
+D no USB disk
+- full USB disk
+D multiple USB disks
+D cant write to disk
+- no microphone
+
+
+STATUS
+- status while booting
+
+MAINTENANCE
+- eliminate UI dependencies
+- slimmer OS
+- manual
+- config mgmt
+- fix hand-edited Makefile (-lwiringPi -ludev)
+
+
+PERFORMANCE
+- adaptive gain
+- battery operation
+- RTC, timezone configuration
+- PB interrupt
+D disk error message
+
+FLEXIBILITY
+- detect and select microphone
+- deetect and select removable storage
+
+

@@ -229,6 +229,9 @@ int main(int argc, char *argv[])
 	digitalWrite (LED, 1) ; 
 	//out = wiringPiISR(PB, INT_EDGE_RISING);
 	
+	// set timezone
+	system("TZ='America/Menominee'; export TZ");
+	
 	/* mjs setup RF pusshbutton*/
 	if ( rfpb_init () == 0) 
 	{
