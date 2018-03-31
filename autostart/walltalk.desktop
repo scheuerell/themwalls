@@ -5,5 +5,5 @@ Comment=start walltalk
 NoDisplay=true
 Exec=/home/pi/Projects/walltalk/autostart/walltalk.sh
 NotShowIn=GNOME;KDE;XFCE;
-Name[en_GB]=walltalk
+Name[en_GB]=walltalk.desktop
 Comment[en_GB]=start walltalk

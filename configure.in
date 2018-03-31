@@ -5,8 +5,8 @@ AM_INIT_AUTOMAKE(walltalk, 0.3.3)
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
-AC_ISC_POSIX
 AC_PROG_CC
+AC_ISC_POSIX
 AM_PROG_CC_STDC
 AC_HEADER_STDC
 
@@ -76,7 +76,7 @@ AC_CHECK_LIB([readline], [readline])
 AC_CHECK_LIB([pthread], [pthread_self], , [AC_MSG_ERROR(Can't find libpthread)])
 
 PACKAGE_CFLAGS="-g -Wall $GTK_CFLAGS $JACK_CFLAGS $LASH_CFLAGS $SNDFILE_CFLAGS $LIBLO_CFLAGS $UDEV_CFLAGS"
-PACKAGE_LIBS="-g $GTK_LIBS $JACK_LIBS $LASH_LIBS $SNDFILE_LIBS $LIBLO_LIBS $UDEV_LIBS -lwiringPi"
+PACKAGE_LIBS="-g $GTK_LIBS $JACK_LIBS $LASH_LIBS $SNDFILE_LIBS $LIBLO_LIBS $UDEV_LIBS -lwiringPi -ludev -lrfpbrx_api -L/home/pi/Projects/walltalk/src/pbrx"
 
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
@@ -85,5 +85,6 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 pixmaps/Makefile
+src/pbrx/Makefile
 ])
 

@@ -7,7 +7,7 @@ TZSTR=$(tzselect)
 #grep TZ= /home/pi/.profile
 date
 
-# remove pre-existion assignments to TZ in .profile
+# remove pre-existing assignments to TZ in .profile
 grep -v "TZ=" /home/pi/.profile > temp && mv temp /home/pi/.profile
 
 # select and assign the new timezone using tzselect

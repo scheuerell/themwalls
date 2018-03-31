@@ -3,6 +3,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/arm-linux-gnueabihf/bits/wordsize.h \
  /usr/include/arm-linux-gnueabihf/gnu/stubs.h \
  /usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h \
+ /usr/include/arm-linux-gnueabihf/bits/math-vector.h \
+ /usr/include/arm-linux-gnueabihf/bits/libm-simd-decl-stubs.h \
  /usr/include/arm-linux-gnueabihf/bits/huge_val.h \
  /usr/include/arm-linux-gnueabihf/bits/huge_valf.h \
  /usr/include/arm-linux-gnueabihf/bits/huge_vall.h \
@@ -11,11 +13,11 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/arm-linux-gnueabihf/bits/mathdef.h \
  /usr/include/arm-linux-gnueabihf/bits/mathcalls.h \
  /usr/include/arm-linux-gnueabihf/bits/mathinline.h /usr/include/stdio.h \
- /usr/lib/gcc/arm-linux-gnueabihf/4.9/include/stddef.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/6/include/stddef.h \
  /usr/include/arm-linux-gnueabihf/bits/types.h \
  /usr/include/arm-linux-gnueabihf/bits/typesizes.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/arm-linux-gnueabihf/4.9/include/stdarg.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/6/include/stdarg.h \
  /usr/include/arm-linux-gnueabihf/bits/stdio_lim.h \
  /usr/include/arm-linux-gnueabihf/bits/sys_errlist.h \
  /usr/include/arm-linux-gnueabihf/bits/stdio.h \
@@ -27,20 +29,20 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/arm-linux-gnueabihf/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
- /usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed/limits.h \
- /usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed/syslimits.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed/limits.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/arm-linux-gnueabihf/bits/posix1_lim.h \
  /usr/include/arm-linux-gnueabihf/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/arm-linux-gnueabihf/bits/posix2_lim.h \
- /usr/lib/gcc/arm-linux-gnueabihf/4.9/include/float.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/6/include/float.h \
  /usr/include/glib-2.0/glib/gversionmacros.h /usr/include/time.h \
  /usr/include/arm-linux-gnueabihf/bits/time.h /usr/include/xlocale.h \
  /usr/include/glib-2.0/glib/garray.h \
  /usr/include/glib-2.0/glib/gasyncqueue.h \
  /usr/include/glib-2.0/glib/gthread.h \
  /usr/include/glib-2.0/glib/gatomic.h /usr/include/glib-2.0/glib/gerror.h \
- /usr/include/glib-2.0/glib/gquark.h \
+ /usr/include/glib-2.0/glib/gquark.h /usr/include/glib-2.0/glib/gutils.h \
  /usr/include/glib-2.0/glib/gbacktrace.h /usr/include/signal.h \
  /usr/include/arm-linux-gnueabihf/bits/sigset.h \
  /usr/include/arm-linux-gnueabihf/bits/signum.h \
@@ -78,11 +80,12 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/glib/gmain.h /usr/include/glib-2.0/glib/gpoll.h \
  /usr/include/glib-2.0/glib/gslist.h /usr/include/glib-2.0/glib/gstring.h \
  /usr/include/glib-2.0/glib/gunicode.h \
- /usr/include/glib-2.0/glib/gutils.h \
  /usr/include/glib-2.0/glib/gkeyfile.h \
  /usr/include/glib-2.0/glib/gmappedfile.h \
  /usr/include/glib-2.0/glib/gmarkup.h \
  /usr/include/glib-2.0/glib/gmessages.h \
+ /usr/include/glib-2.0/glib/gvariant.h \
+ /usr/include/glib-2.0/glib/gvarianttype.h \
  /usr/include/glib-2.0/glib/goption.h \
  /usr/include/glib-2.0/glib/gpattern.h \
  /usr/include/glib-2.0/glib/gprimes.h /usr/include/glib-2.0/glib/gqsort.h \
@@ -100,8 +103,6 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/glib/gtrashstack.h \
  /usr/include/glib-2.0/glib/gtree.h \
  /usr/include/glib-2.0/glib/gurifuncs.h \
- /usr/include/glib-2.0/glib/gvarianttype.h \
- /usr/include/glib-2.0/glib/gvariant.h \
  /usr/include/glib-2.0/glib/gversion.h \
  /usr/include/glib-2.0/glib/deprecated/gallocator.h \
  /usr/include/glib-2.0/glib/deprecated/gcache.h \
@@ -115,6 +116,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/arm-linux-gnueabihf/sys/sysmacros.h /usr/include/pthread.h \
  /usr/include/sched.h /usr/include/arm-linux-gnueabihf/bits/sched.h \
  /usr/include/arm-linux-gnueabihf/bits/setjmp.h \
+ /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/gobject/gobject.h \
  /usr/include/glib-2.0/gobject/gtype.h \
  /usr/include/glib-2.0/gobject/gvalue.h \
@@ -131,6 +133,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/gobject/gtypeplugin.h \
  /usr/include/glib-2.0/gobject/gvaluearray.h \
  /usr/include/glib-2.0/gobject/gvaluetypes.h \
+ /usr/include/glib-2.0/gobject/gobject-autocleanups.h \
  /usr/include/glib-2.0/gio/gaction.h \
  /usr/include/glib-2.0/gio/gactiongroup.h \
  /usr/include/glib-2.0/gio/gactiongroupexporter.h \
@@ -158,6 +161,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/arm-linux-gnueabihf/bits/posix_opt.h \
  /usr/include/arm-linux-gnueabihf/bits/environments.h \
  /usr/include/arm-linux-gnueabihf/bits/confname.h /usr/include/getopt.h \
+ /usr/include/glib-2.0/gio/gdatagrambased.h \
  /usr/include/glib-2.0/gio/gdatainputstream.h \
  /usr/include/glib-2.0/gio/gdataoutputstream.h \
  /usr/include/glib-2.0/gio/gdbusaddress.h \
@@ -173,6 +177,9 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/gio/gdbusserver.h \
  /usr/include/glib-2.0/gio/gdbusutils.h \
  /usr/include/glib-2.0/gio/gdrive.h \
+ /usr/include/glib-2.0/gio/gdtlsclientconnection.h \
+ /usr/include/glib-2.0/gio/gdtlsconnection.h \
+ /usr/include/glib-2.0/gio/gdtlsserverconnection.h \
  /usr/include/glib-2.0/gio/gemblemedicon.h \
  /usr/include/glib-2.0/gio/gicon.h /usr/include/glib-2.0/gio/gemblem.h \
  /usr/include/glib-2.0/gio/gfileattribute.h \
@@ -223,6 +230,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/gio/gactiongroup.h \
  /usr/include/glib-2.0/gio/gactionmap.h \
  /usr/include/glib-2.0/gio/gsimpleasyncresult.h \
+ /usr/include/glib-2.0/gio/gsimpleiostream.h \
  /usr/include/glib-2.0/gio/gsimplepermission.h \
  /usr/include/glib-2.0/gio/gsocketclient.h \
  /usr/include/glib-2.0/gio/gsocketconnectable.h \
@@ -268,6 +276,9 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/glib-2.0/gio/gmenuexporter.h \
  /usr/include/glib-2.0/gio/gdbusmenumodel.h \
  /usr/include/glib-2.0/gio/gnotification.h \
+ /usr/include/glib-2.0/gio/glistmodel.h \
+ /usr/include/glib-2.0/gio/gliststore.h \
+ /usr/include/glib-2.0/gio/gio-autocleanups.h \
  /usr/include/gtk-2.0/gdk/gdkscreen.h /usr/include/cairo/cairo.h \
  /usr/include/cairo/cairo-version.h /usr/include/cairo/cairo-features.h \
  /usr/include/cairo/cairo-deprecated.h \
@@ -275,6 +286,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/pango-1.0/pango/pango-attributes.h \
  /usr/include/pango-1.0/pango/pango-font.h \
  /usr/include/pango-1.0/pango/pango-coverage.h \
+ /usr/include/pango-1.0/pango/pango-version-macros.h \
+ /usr/include/pango-1.0/pango/pango-features.h \
  /usr/include/pango-1.0/pango/pango-types.h \
  /usr/include/pango-1.0/pango/pango-gravity.h \
  /usr/include/pango-1.0/pango/pango-matrix.h \
@@ -289,7 +302,6 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/pango-1.0/pango/pango-engine.h \
  /usr/include/pango-1.0/pango/pango-glyph.h \
  /usr/include/pango-1.0/pango/pango-enum-types.h \
- /usr/include/pango-1.0/pango/pango-features.h \
  /usr/include/pango-1.0/pango/pango-glyph-item.h \
  /usr/include/pango-1.0/pango/pango-layout.h \
  /usr/include/pango-1.0/pango/pango-tabs.h \
@@ -302,6 +314,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/gtk-2.0/gdk/gdkcairo.h /usr/include/gtk-2.0/gdk/gdkpixbuf.h \
  /usr/include/gtk-2.0/gdk/gdkrgb.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h \
+ /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-macros.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-transform.h \
@@ -310,6 +323,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h \
  /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h \
+ /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h \
  /usr/include/pango-1.0/pango/pangocairo.h \
  /usr/include/gtk-2.0/gdk/gdkcursor.h \
  /usr/include/gtk-2.0/gdk/gdkdisplaymanager.h \
@@ -383,6 +397,10 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h:
 
+/usr/include/arm-linux-gnueabihf/bits/math-vector.h:
+
+/usr/include/arm-linux-gnueabihf/bits/libm-simd-decl-stubs.h:
+
 /usr/include/arm-linux-gnueabihf/bits/huge_val.h:
 
 /usr/include/arm-linux-gnueabihf/bits/huge_valf.h:
@@ -401,7 +419,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/stdio.h:
 
-/usr/lib/gcc/arm-linux-gnueabihf/4.9/include/stddef.h:
+/usr/lib/gcc/arm-linux-gnueabihf/6/include/stddef.h:
 
 /usr/include/arm-linux-gnueabihf/bits/types.h:
 
@@ -413,7 +431,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/wchar.h:
 
-/usr/lib/gcc/arm-linux-gnueabihf/4.9/include/stdarg.h:
+/usr/lib/gcc/arm-linux-gnueabihf/6/include/stdarg.h:
 
 /usr/include/arm-linux-gnueabihf/bits/stdio_lim.h:
 
@@ -447,9 +465,9 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/glib-2.0/glib/gmacros.h:
 
-/usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed/limits.h:
+/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed/limits.h:
 
-/usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed/syslimits.h:
+/usr/lib/gcc/arm-linux-gnueabihf/6/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -461,7 +479,7 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/arm-linux-gnueabihf/bits/posix2_lim.h:
 
-/usr/lib/gcc/arm-linux-gnueabihf/4.9/include/float.h:
+/usr/lib/gcc/arm-linux-gnueabihf/6/include/float.h:
 
 /usr/include/glib-2.0/glib/gversionmacros.h:
 
@@ -482,6 +500,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/glib-2.0/glib/gerror.h:
 
 /usr/include/glib-2.0/glib/gquark.h:
+
+/usr/include/glib-2.0/glib/gutils.h:
 
 /usr/include/glib-2.0/glib/gbacktrace.h:
 
@@ -577,8 +597,6 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/glib-2.0/glib/gunicode.h:
 
-/usr/include/glib-2.0/glib/gutils.h:
-
 /usr/include/glib-2.0/glib/gkeyfile.h:
 
 /usr/include/glib-2.0/glib/gmappedfile.h:
@@ -586,6 +604,10 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/glib-2.0/glib/gmarkup.h:
 
 /usr/include/glib-2.0/glib/gmessages.h:
+
+/usr/include/glib-2.0/glib/gvariant.h:
+
+/usr/include/glib-2.0/glib/gvarianttype.h:
 
 /usr/include/glib-2.0/glib/goption.h:
 
@@ -627,10 +649,6 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/glib-2.0/glib/gurifuncs.h:
 
-/usr/include/glib-2.0/glib/gvarianttype.h:
-
-/usr/include/glib-2.0/glib/gvariant.h:
-
 /usr/include/glib-2.0/glib/gversion.h:
 
 /usr/include/glib-2.0/glib/deprecated/gallocator.h:
@@ -660,6 +678,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/arm-linux-gnueabihf/bits/sched.h:
 
 /usr/include/arm-linux-gnueabihf/bits/setjmp.h:
+
+/usr/include/glib-2.0/glib/glib-autocleanups.h:
 
 /usr/include/glib-2.0/gobject/gobject.h:
 
@@ -692,6 +712,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/glib-2.0/gobject/gvaluearray.h:
 
 /usr/include/glib-2.0/gobject/gvaluetypes.h:
+
+/usr/include/glib-2.0/gobject/gobject-autocleanups.h:
 
 /usr/include/glib-2.0/gio/gaction.h:
 
@@ -751,6 +773,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/getopt.h:
 
+/usr/include/glib-2.0/gio/gdatagrambased.h:
+
 /usr/include/glib-2.0/gio/gdatainputstream.h:
 
 /usr/include/glib-2.0/gio/gdataoutputstream.h:
@@ -780,6 +804,12 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/glib-2.0/gio/gdbusutils.h:
 
 /usr/include/glib-2.0/gio/gdrive.h:
+
+/usr/include/glib-2.0/gio/gdtlsclientconnection.h:
+
+/usr/include/glib-2.0/gio/gdtlsconnection.h:
+
+/usr/include/glib-2.0/gio/gdtlsserverconnection.h:
 
 /usr/include/glib-2.0/gio/gemblemedicon.h:
 
@@ -887,6 +917,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/glib-2.0/gio/gsimpleasyncresult.h:
 
+/usr/include/glib-2.0/gio/gsimpleiostream.h:
+
 /usr/include/glib-2.0/gio/gsimplepermission.h:
 
 /usr/include/glib-2.0/gio/gsocketclient.h:
@@ -981,6 +1013,12 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/glib-2.0/gio/gnotification.h:
 
+/usr/include/glib-2.0/gio/glistmodel.h:
+
+/usr/include/glib-2.0/gio/gliststore.h:
+
+/usr/include/glib-2.0/gio/gio-autocleanups.h:
+
 /usr/include/gtk-2.0/gdk/gdkscreen.h:
 
 /usr/include/cairo/cairo.h:
@@ -1000,6 +1038,10 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/pango-1.0/pango/pango-font.h:
 
 /usr/include/pango-1.0/pango/pango-coverage.h:
+
+/usr/include/pango-1.0/pango/pango-version-macros.h:
+
+/usr/include/pango-1.0/pango/pango-features.h:
 
 /usr/include/pango-1.0/pango/pango-types.h:
 
@@ -1028,8 +1070,6 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/pango-1.0/pango/pango-glyph.h:
 
 /usr/include/pango-1.0/pango/pango-enum-types.h:
-
-/usr/include/pango-1.0/pango/pango-features.h:
 
 /usr/include/pango-1.0/pango/pango-glyph-item.h:
 
@@ -1061,6 +1101,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h:
 
+/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-macros.h:
+
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h:
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h:
@@ -1076,6 +1118,8 @@ gtkmeter.o: gtkmeter.c /usr/include/stdc-predef.h /usr/include/math.h \
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h:
 
 /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h:
+
+/usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h:
 
 /usr/include/pango-1.0/pango/pangocairo.h:
 
